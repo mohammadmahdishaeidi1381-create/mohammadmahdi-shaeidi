@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammad Mahdi Shaeidi - Senior IT Solutions Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+--primary: #4a9eff;
+--secondary: #7f5af0;
+--accent: #00d9ff;
+--dark: #0b1120;
+--darker: #060a14;
+--card-bg: rgba(255, 255, 255, 0.03);
+--card-border: rgba(74, 158, 255, 0.15);
+--text-primary: #ffffff;
+--text-secondary: #b0c9e8;
+--text-muted: #6b7c93;
+}
+
+body {
+background: var(--darker);
+background-image:
+radial-gradient(circle at 20% 30%, rgba(74, 158, 255, 0.08) 0%, transparent 50%),
+radial-gradient(circle at 80% 70%, rgba(127, 90, 240, 0.08) 0%, transparent 50%);
+min-height: 100vh;
+font-family: 'Inter', sans-serif;
+color: var(--text-primary);
+direction: ltr;
+line-height: 1.6;
+}
+
+body.rtl { direction: rtl; }
+
+/* ====== Language Menu ====== */
+.lang-menu {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+background: rgba(11, 17, 32, 0.95);
+backdrop-filter: blur(20px);
+padding: 12px 20px;
+display: flex;
+justify-content: center;
+gap: 8px;
+z-index: 999;
+border-bottom: 1px solid var(--card-border);
+flex-wrap: wrap;
+}
+
+.lang-btn {
+background: transparent;
+border: 1px solid var(--card-border);
+color: var(--text-secondary);
+padding: 6px 16px;
+border-radius: 30px;
+font-size: 0.85rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+gap: 6px;
+font-family: inherit;
+}
+
+.lang-btn:hover {
+background: rgba(74, 158, 255, 0.1);
+border-color: var(--primary);
+color: var(--text-primary);
+transform: translateY(-2px);
+}
+
+.lang-btn.active {
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+border-color: transparent;
+color: white;
+box-shadow: 0 4px 20px rgba(74, 158, 255, 0.4);
+}
+
+.lang-btn .flag { font-size: 1.1rem; }
+
+/* ====== Main Container ====== */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 100px 20px 40px;
+}
+
+/* ====== Hero Section ====== */
+.hero {
+background: linear-gradient(135deg, rgba(74, 158, 255, 0.05), rgba(127, 90, 240, 0.05));
+border: 1px solid var(--card-border);
+border-radius: 24px;
+padding: 48px;
+margin-bottom: 32px;
+position: relative;
+overflow: hidden;
+backdrop-filter: blur(10px);
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(74, 158, 255, 0.1) 0%, transparent 70%);
+animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); opacity: 0.5; }
+50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-header {
+display: flex;
+align-items: center;
+gap: 32px;
+margin-bottom: 24px;
+flex-wrap: wrap;
+}
+
+.avatar {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+font-weight: 700;
+color: white;
+box-shadow: 0 8px 32px rgba(74, 158, 255, 0.3);
+flex-shrink: 0;
+}
+
+.hero-info h1 {
+font-size: 2.8rem;
+font-weight: 800;
+letter-spacing: -1px;
+background: linear-gradient(135deg, #ffffff, var(--primary));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 8px;
+}
+
+.hero-info .title {
+font-size: 1.1rem;
+color: var(--primary);
+font-weight: 600;
+margin-bottom: 12px;
+}
+
+.hero-info .location {
+font-size: 0.9rem;
+color: var(--text-secondary);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.hero-stats {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 16px;
+margin-top: 32px;
+}
+
+.stat-card {
+background: var(--card-bg);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 20px;
+text-align: center;
+transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-4px);
+border-color: var(--primary);
+box-shadow: 0 8px 24px rgba(74, 158, 255, 0.2);
+}
+
+.stat-number {
+font-size: 2rem;
+font-weight: 800;
+background: linear-gradient(135deg, var(--primary), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+font-size: 0.85rem;
+color: var(--text-secondary);
+margin-top: 4px;
+}
+
+/* ====== Section ====== */
+.section {
+background: var(--card-bg);
+border: 1px solid var(--card-border);
+border-radius: 20px;
+padding: 32px;
+margin-bottom: 24px;
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+}
+
+.section:hover {
+border-color: rgba(74, 158, 255, 0.3);
+}
+
+.section-title {
+font-size: 1.3rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-bottom: 24px;
+display: flex;
+align-items: center;
+gap: 12px;
+padding-bottom: 12px;
+border-bottom: 2px solid var(--card-border);
+}
+
+.section-title .icon { font-size: 1.5rem; }
+
+/* ====== Tech Stack ====== */
+.tech-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+}
+
+.tech-category {
+background: rgba(74, 158, 255, 0.05);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 20px;
+}
+
+.tech-category h3 {
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--primary);
+margin-bottom: 12px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.tech-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+.tech-tag {
+background: rgba(74, 158, 255, 0.1);
+border: 1px solid rgba(74, 158, 255, 0.2);
+padding: 6px 14px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+color: var(--text-secondary);
+transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+background: rgba(74, 158, 255, 0.2);
+color: var(--text-primary);
+transform: scale(1.05);
+}
+
+/* ====== Experience Timeline ====== */
+.timeline {
+position: relative;
+padding-left: 32px;
+}
+
+.timeline::before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 2px;
+background: linear-gradient(180deg, var(--primary), var(--secondary));
+}
+
+.timeline-item {
+position: relative;
+margin-bottom: 32px;
+padding-left: 24px;
+}
+
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -38px;
+top: 8px;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: var(--primary);
+box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.2);
+}
+
+.timeline-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 12px;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+.timeline-title {
+font-size: 1.1rem;
+font-weight: 700;
+color: var(--text-primary);
+}
+
+.timeline-company {
+font-size: 0.95rem;
+color: var(--primary);
+font-weight: 600;
+margin-top: 4px;
+}
+
+.timeline-date {
+background: rgba(74, 158, 255, 0.1);
+border: 1px solid rgba(74, 158, 255, 0.2);
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.75rem;
+font-weight: 600;
+color: var(--text-secondary);
+}
+
+.timeline-desc {
+color: var(--text-secondary);
+font-size: 0.9rem;
+line-height: 1.8;
+}
+
+.timeline-desc ul {
+list-style: none;
+margin-top: 8px;
+}
+
+.timeline-desc li {
+padding-left: 20px;
+position: relative;
+margin-bottom: 6px;
+}
+
+.timeline-desc li::before {
+content: '▹';
+position: absolute;
+left: 0;
+color: var(--primary);
+font-weight: 700;
+}
+
+/* ====== Projects Grid ====== */
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+
+.project-card {
+background: rgba(74, 158, 255, 0.05);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 24px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.project-card:hover {
+transform: translateY(-4px);
+border-color: var(--primary);
+box-shadow: 0 12px 32px rgba(74, 158, 255, 0.2);
+}
+
+.project-title {
+font-size: 1.05rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-bottom: 12px;
+}
+
+.project-desc {
+color: var(--text-secondary);
+font-size: 0.88rem;
+line-height: 1.7;
+margin-bottom: 16px;
+}
+
+.project-metrics {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+.metric {
+background: rgba(0, 217, 255, 0.1);
+border: 1px solid rgba(0, 217, 255, 0.2);
+padding: 4px 12px;
+border-radius: 16px;
+font-size: 0.75rem;
+font-weight: 600;
+color: var(--accent);
+}
+
+/* ====== Skills Progress ====== */
+.skills-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.skill-item { margin-bottom: 16px; }
+
+.skill-header {
+display: flex;
+justify-content: space-between;
+margin-bottom: 8px;
+}
+
+.skill-name {
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--text-primary);
+}
+
+.skill-level {
+font-size: 0.8rem;
+color: var(--primary);
+font-weight: 700;
+}
+
+.skill-bar {
+height: 8px;
+background: rgba(74, 158, 255, 0.1);
+border-radius: 10px;
+overflow: hidden;
+}
+
+.skill-progress {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--accent));
+border-radius: 10px;
+transition: width 1s ease;
+}
+
+/* ====== Languages ====== */
+.lang-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 16px;
+}
+
+.lang-card {
+background: rgba(74, 158, 255, 0.05);
+border: 1px solid var(--card-border);
+border-radius: 12px;
+padding: 16px;
+text-align: center;
+}
+
+.lang-name {
+font-size: 1rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-bottom: 4px;
+}
+
+.lang-level {
+font-size: 0.85rem;
+color: var(--primary);
+font-weight: 600;
+}
+
+/* ====== Contact ====== */
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 16px;
+}
+
+.contact-item {
+background: rgba(74, 158, 255, 0.05);
+border: 1px solid var(--card-border);
+border-radius: 12px;
+padding: 16px;
+display: flex;
+align-items: center;
+gap: 12px;
+transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+border-color: var(--primary);
+transform: translateX(4px);
+}
+
+.contact-icon { font-size: 1.5rem; }
+
+.contact-info { flex: 1; }
+
+.contact-label {
+font-size: 0.75rem;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.contact-value {
+font-size: 0.9rem;
+color: var(--text-primary);
+font-weight: 600;
+margin-top: 2px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+.hero { padding: 32px 24px; }
+.hero-header { flex-direction: column; text-align: center; }
+.hero-info h1 { font-size: 2rem; }
+.section { padding: 24px 20px; }
+.timeline { padding-left: 24px; }
+.timeline-item { padding-left: 16px; }
+.timeline-item::before { left: -30px; }
+}
+
+@media print {
+body { background: white !important; color: black !important; }
+.lang-menu { display: none !important; }
+.section, .hero {
+background: white !important;
+border: 1px solid #ddd !important;
+break-inside: avoid;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- Language Menu -->
+<nav class="lang-menu" id="langMenu">
+<button class="lang-btn" data-lang="fa"><span class="flag">🇷</span> فارسی</button>
+<button class="lang-btn active" data-lang="en"><span class="flag">🇧</span> English</button>
+<button class="lang-btn" data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button>
+<button class="lang-btn" data-lang="nl"><span class="flag">🇳🇱</span> Nederlands</button>
+<button class="lang-btn" data-lang="ar"><span class="flag">🇸🇦</span> العربية</button>
+</nav>
+
+<div class="container">
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-header">
+<div class="avatar">MS</div>
+<div class="hero-info">
+<h1 id="name">Mohammad Mahdi Shaeidi</h1>
+<div class="title" id="title">Senior IT Solutions Engineer | Network Security & Automation Specialist</div>
+<div class="location">
+<span>📍</span>
+<span id="location">Dezful, Iran · Open to Relocation</span>
+</div>
+</div>
+</div>
+<div class="hero-stats">
+<div class="stat-card">
+<div class="stat-number">3+</div>
+<div class="stat-label" id="statYears">Years Experience</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">15+</div>
+<div class="stat-label" id="statProjects">Projects Delivered</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">7+</div>
+<div class="stat-label" id="statSecurity">Security Audits</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">99.9%</div>
+<div class="stat-label" id="statUptime">System Uptime</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Tech Stack -->
+<section class="section">
+<div class="section-title">
+<span class="icon">⚡</span>
+<span id="techTitle">Technical Stack</span>
+</div>
+<div class="tech-grid" id="techGrid"></div>
+</section>
+
+<!-- Experience -->
+<section class="section">
+<div class="section-title">
+<span class="icon">💼</span>
+<span id="expTitle">Professional Experience</span>
+</div>
+<div class="timeline" id="timeline"></div>
+</section>
+
+<!-- Key Projects -->
+<section class="section">
+<div class="section-title">
+<span class="icon">🚀</span>
+<span id="projectsTitle">Key Engineering Projects</span>
+</div>
+<div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- Skills -->
+<section class="section">
+<div class="section-title">
+<span class="icon"></span>
+<span id="skillsTitle">Core Competencies</span>
+</div>
+<div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<!-- Education & Certifications -->
+<section class="section">
+<div class="section-title">
+<span class="icon">🎓</span>
+<span id="eduTitle">Education & Certifications</span>
+</div>
+<div id="eduContent"></div>
+</section>
+
+<!-- Languages -->
+<section class="section">
+<div class="section-title">
+<span class="icon">🗣️</span>
+<span id="langTitle">Languages</span>
+</div>
+<div class="lang-grid" id="langGrid"></div>
+</section>
+
+<!-- Contact -->
+<section class="section">
+<div class="section-title">
+<span class="icon">📬</span>
+<span id="contactTitle">Get In Touch</span>
+</div>
+<div class="contact-grid" id="contactGrid"></div>
+</section>
+</div>
+
+<script>
+const translations = {
+en: {
+name: 'Mohammad Mahdi Shaeidi',
+title: 'Senior IT Solutions Engineer | Network Security & Automation Specialist',
+location: 'Dezful, Iran · Open to Relocation',
+statYears: 'Years Experience',
+statProjects: 'Projects Delivered',
+statSecurity: 'Security Audits',
+statUptime: 'System Uptime',
+techTitle: 'Technical Stack',
+techStack: [
+{ category: 'Network & Infrastructure', tags: ['CCNA', 'MikroTik', 'Cisco', 'TCP/IP', 'VLAN', 'Routing', 'Switching'] },
+{ category: 'Cybersecurity', tags: ['Kali Linux', 'Penetration Testing', 'Vulnerability Assessment', 'Zero-Trust', 'Network Hardening'] },
+{ category: 'Backend Development', tags: ['Python', 'C++', 'Django', 'Flask', 'n8n', 'REST APIs'] },
+{ category: 'Web Technologies', tags: ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'JavaScript', 'SEO'] },
+{ category: 'Automation & AI', tags: ['n8n Workflows', 'Telegram Bots', 'AI Integration', 'Prompt Engineering'] },
+{ category: 'FinTech', tags: ['Algorithmic Trading', 'Crypto APIs', 'Forex Systems', 'Quantitative Analysis'] }
+],
+expTitle: 'Professional Experience',
+experience: [
+{
+title: 'Lead Web Engineer & SEO Strategist',
+company: 'Pegah (Jal) · Tehran',
+date: '2023 – Present',
+desc: [
+'Architected and deployed jal.ir from ground up, achieving 95+ WooRank score',
+'Implemented advanced Technical SEO strategies, increasing organic traffic by 340%',
+'Optimized Core Web Vitals, reducing page load time by 60%',
+'Successfully replicated architecture for Dandanmehr Dezful platform'
+]
+},
+{
+title: 'IT Infrastructure Engineer',
+company: 'Saraye Irani',
+date: '2022 – 2023',
+desc: [
+'Managed enterprise network topology serving 200+ endpoints',
+'Developed Python automation scripts, reducing manual IT overhead by 40%',
+'Maintained 99.9% uptime for critical business systems',
+'Implemented security protocols and disaster recovery procedures'
+]
+},
+{
+title: 'Network & Systems Administrator',
+company: 'Madar Dezful Holding',
+date: '2021 – 2022',
+desc: [
+'Administered active/passive network layers for enterprise operations',
+'Executed routine security patching and vulnerability assessments',
+'Managed hardware lifecycle and infrastructure upgrades',
+'Ensured compliance with industry security standards'
+]
+},
+{
+title: 'Network Architect & Smart Systems Contractor',
+company: 'Koohrang Rayaneh / Restan Net',
+date: '2020 – 2021',
+desc: [
+'Designed and commissioned enterprise-grade passive/active networks',
+'Integrated IoT surveillance systems for 15+ corporate clients',
+'Configured MikroTik/Cisco edge routers for optimal performance',
+'Delivered projects 20% ahead of schedule with zero defects'
+]
+}
+],
+projectsTitle: 'Key Engineering Projects',
+projects: [
+{
+title: 'Algorithmic Trading Ecosystem',
+desc: 'Engineered 10 proprietary trading bots using C++ & Python for Crypto/Forex markets with low-latency API integrations and advanced quantitative algorithms.',
+metrics: ['10 Bots', 'C++/Python', 'Low-Latency', 'High-Frequency']
+},
+{
+title: 'jal.ir Enterprise Platform',
+desc: 'Built highly optimized, SEO-first web architecture with advanced caching mechanisms and WooRank-compliant structural design.',
+metrics: ['95+ WooRank', '60% Faster', 'SEO-First', 'Enterprise-Grade']
+},
+{
+title: 'Offensive Security Operations',
+desc: 'Conducted 7+ black-box penetration tests for corporate networks, delivering comprehensive vulnerability reports and remediation strategies.',
+metrics: ['7+ Audits', 'Kali Linux', 'Black-Box', 'Zero-Day']
+},
+{
+title: 'n8n Workflow Automation',
+desc: 'Designed custom AI-driven automation pipelines integrating Telegram microservices, CRM data parsing, and automated financial reporting.',
+metrics: ['15+ Bots', 'AI-Driven', 'CRM Integration', 'Auto-Reporting']
+}
+],
+skillsTitle: 'Core Competencies',
+skills: [
+{ name: 'Network Architecture', level: 95 },
+{ name: 'Cybersecurity & Pentesting', level: 90 },
+{ name: 'Python & Backend Development', level: 88 },
+{ name: 'Web Engineering & SEO', level: 92 },
+{ name: 'Automation & AI Integration', level: 85 },
+{ name: 'System Administration', level: 90 }
+],
+eduTitle: 'Education & Certifications',
+education: [
+{ type: 'degree', title: 'B.Sc. Software Engineering', institution: 'Graduated' },
+{ type: 'degree', title: 'Associate Degree in Software', institution: 'Graduated' },
+{ type: 'cert', title: 'CCNA (Cisco Certified Network Associate)', institution: 'Cisco' },
+{ type: 'cert', title: 'MTCNA (MikroTik Certified Network Associate)', institution: 'MikroTik' },
+{ type: 'cert', title: 'Network+', institution: 'CompTIA' },
+{ type: 'cert', title: 'ICDL', institution: 'ICDL' }
+],
+langTitle: 'Languages',
+languages: [
+{ name: 'Persian', level: 'Native' },
+{ name: 'English', level: 'Professional Working' }
+],
+contactTitle: 'Get In Touch',
+contact: [
+{ icon: '', label: 'Email', value: 'mohammadmahdi.shaeidi1381@gmail.com' },
+{ icon: '', label: 'Phone', value: '+98 916 396 134' },
+{ icon: '🌐', label: 'Portfolio', value: 'jal.ir' },
+{ icon: '📅', label: 'Born', value: '2002 · Dezful, Iran' }
+]
+},
+de: {
+name: 'Mohammad Mahdi Shaeidi',
+title: 'Senior IT Solutions Engineer | Netzwerksicherheit & Automatisierung',
+location: 'Dezful, Iran · Umzugsbereit',
+statYears: 'Jahre Erfahrung',
+statProjects: 'Projekte Geliefert',
+statSecurity: 'Sicherheitsaudits',
+statUptime: 'Systemverfügbarkeit',
+techTitle: 'Technischer Stack',
+techStack: [
+{ category: 'Netzwerk & Infrastruktur', tags: ['CCNA', 'MikroTik', 'Cisco', 'TCP/IP', 'VLAN', 'Routing', 'Switching'] },
+{ category: 'Cybersicherheit', tags: ['Kali Linux', 'Penetrationstests', 'Schwachstellenanalyse', 'Zero-Trust', 'Netzwerkhärtung'] },
+{ category: 'Backend-Entwicklung', tags: ['Python', 'C++', 'Django', 'Flask', 'n8n', 'REST APIs'] },
+{ category: 'Web-Technologien', tags: ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'JavaScript', 'SEO'] },
+{ category: 'Automatisierung & KI', tags: ['n8n Workflows', 'Telegram Bots', 'KI-Integration', 'Prompt Engineering'] },
+{ category: 'FinTech', tags: ['Algorithmischer Handel', 'Crypto APIs', 'Forex-Systeme', 'Quantitative Analyse'] }
+],
+expTitle: 'Berufserfahrung',
+experience: [
+{
+title: 'Lead Web Engineer & SEO Stratege',
+company: 'Pegah (Jal) · Teheran',
+date: '2023 – Heute',
+desc: [
+'Architektur und Bereitstellung von jal.ir von Grund auf, 95+ WooRank-Score erreicht',
+'Implementierung fortschrittlicher Technischer SEO-Strategien, 340% mehr organischer Traffic',
+'Optimierung der Core Web Vitals, 60% schnellere Ladezeiten',
+'Erfolgreiche Replikation der Architektur für Dandanmehr Dezful'
+]
+},
+{
+title: 'IT-Infrastruktur-Ingenieur',
+company: 'Saraye Irani',
+date: '2022 – 2023',
+desc: [
+'Verwaltung der Enterprise-Netzwerktopologie für 200+ Endpunkte',
+'Entwicklung von Python-Automatisierungsskripten, 40% weniger manueller IT-Overhead',
+'99,9% Verfügbarkeit für geschäftskritische Systeme',
+'Implementierung von Sicherheitsprotokollen und Disaster-Recovery-Verfahren'
+]
+},
+{
+title: 'Netzwerk- & Systemadministrator',
+company: 'Madar Dezful Holding',
+date: '2021 – 2022',
+desc: [
+'Administration der aktiven/passiven Netzwerkebenen',
+'Durchführung von Sicherheits-Patching und Schwachstellenbewertungen',
+'Hardware-Lifecycle-Management und Infrastruktur-Upgrades',
+'Einhaltung von Industriestandards'
+]
+},
+{
+title: 'Netzwerkarchitekt & Smart-Systems Auftragnehmer',
+company: 'Koohrang Rayaneh / Restan Net',
+date: '2020 – 2021',
+desc: [
+'Planung und Inbetriebnahme von Enterprise-Netzwerken',
+'Integration von IoT-Überwachungssystemen für 15+ Kunden',
+'Konfiguration von MikroTik/Cisco Edge-Routern',
+'Projekte 20% vor Zeitplan geliefert'
+]
+}
+],
+projectsTitle: 'Technische Projekte',
+projects: [
+{
+title: 'Algorithmisches Trading-Ökosystem',
+desc: 'Entwicklung von 10 proprietären Trading-Bots mit C++ & Python für Krypto/Forex-Märkte mit Low-Latency-API-Integrationen.',
+metrics: ['10 Bots', 'C++/Python', 'Low-Latency', 'High-Frequency']
+},
+{
+title: 'jal.ir Enterprise-Plattform',
+desc: 'Aufbau einer hochgradig optimierten, SEO-first Web-Architektur mit fortschrittlichen Caching-Mechanismen.',
+metrics: ['95+ WooRank', '60% Schneller', 'SEO-First', 'Enterprise']
+},
+{
+title: 'Offensive Security Operations',
+desc: 'Durchführung von 7+ Black-Box-Penetrationstests für Unternehmensnetzwerke mit umfassenden Schwachstellenberichten.',
+metrics: ['7+ Audits', 'Kali Linux', 'Black-Box', 'Zero-Day']
+},
+{
+title: 'n8n Workflow-Automatisierung',
+desc: 'Entwurf von KI-gesteuerten Automatisierungspipelines mit Telegram-Microservices und CRM-Datenanalyse.',
+metrics: ['15+ Bots', 'KI-Gesteuert', 'CRM', 'Auto-Reporting']
+}
+],
+skillsTitle: 'Kernkompetenzen',
+skills: [
+{ name: 'Netzwerkarchitektur', level: 95 },
+{ name: 'Cybersicherheit & Pentesting', level: 90 },
+{ name: 'Python & Backend-Entwicklung', level: 88 },
+{ name: 'Web-Engineering & SEO', level: 92 },
+{ name: 'Automatisierung & KI', level: 85 },
+{ name: 'Systemadministration', level: 90 }
+],
+eduTitle: 'Ausbildung & Zertifizierungen',
+education: [
+{ type: 'degree', title: 'B.Sc. Softwaretechnik', institution: 'Abgeschlossen' },
+{ type: 'degree', title: 'Associate Degree in Software', institution: 'Abgeschlossen' },
+{ type: 'cert', title: 'CCNA (Cisco)', institution: 'Cisco' },
+{ type: 'cert', title: 'MTCNA (MikroTik)', institution: 'MikroTik' },
+{ type: 'cert', title: 'Network+', institution: 'CompTIA' },
+{ type: 'cert', title: 'ICDL', institution: 'ICDL' }
+],
+langTitle: 'Sprachen',
+languages: [
+{ name: 'Persisch', level: 'Muttersprache' },
+{ name: 'Englisch', level: 'Fachsprachlich' }
+],
+contactTitle: 'Kontakt',
+contact: [
+{ icon: '', label: 'E-Mail', value: 'mohammadmahdi.shaeidi1381@gmail.com' },
+{ icon: '', label: 'Telefon', value: '+98 916 396 134' },
+{ icon: '', label: 'Portfolio', value: 'jal.ir' },
+{ icon: '', label: 'Geboren', value: '2002 · Dezful, Iran' }
+]
+},
+nl: {
+name: 'Mohammad Mahdi Shaeidi',
+title: 'Senior IT Solutions Engineer | Netwerkbeveiliging & Automatisering',
+location: 'Dezful, Iran · Open voor Relocatie',
+statYears: 'Jaar Ervaring',
+statProjects: 'Projecten Geleverd',
+statSecurity: 'Beveiligingsaudits',
+statUptime: 'Systeem Uptime',
+techTitle: 'Technische Stack',
+techStack: [
+{ category: 'Netwerk & Infrastructuur', tags: ['CCNA', 'MikroTik', 'Cisco', 'TCP/IP', 'VLAN', 'Routing', 'Switching'] },
+{ category: 'Cybersecurity', tags: ['Kali Linux', 'Penetratietests', 'Kwetsbaarheidsanalyse', 'Zero-Trust', 'Netwerkhardening'] },
+{ category: 'Backend Ontwikkeling', tags: ['Python', 'C++', 'Django', 'Flask', 'n8n', 'REST APIs'] },
+{ category: 'Web Technologieën', tags: ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'JavaScript', 'SEO'] },
+{ category: 'Automatisering & AI', tags: ['n8n Workflows', 'Telegram Bots', 'AI Integratie', 'Prompt Engineering'] },
+{ category: 'FinTech', tags: ['Algoritmische Trading', 'Crypto APIs', 'Forex Systemen', 'Kwantitatieve Analyse'] }
+],
+expTitle: 'Werkervaring',
+experience: [
+{
+title: 'Lead Web Engineer & SEO Strateeg',
+company: 'Pegah (Jal) · Teheran',
+date: '2023 – Heden',
+desc: [
+'Architectuur en implementatie van jal.ir, 95+ WooRank score bereikt',
+'Implementatie van geavanceerde Technische SEO-strategieën, 340% meer organisch verkeer',
+'Optimalisatie van Core Web Vitals, 60% snellere laadtijden',
+'Succesvolle replicatie van architectuur voor Dandanmehr Dezful'
+]
+},
+{
+title: 'IT-infrastructuur Engineer',
+company: 'Saraye Irani',
+date: '2022 – 2023',
+desc: [
+'Beheer van enterprise-netwerktopologie voor 200+ endpoints',
+'Ontwikkeling van Python-automatiseringsscripts, 40% minder handmatige IT-overhead',
+'99,9% uptime voor bedrijfskritieke systemen',
+'Implementatie van beveiligingsprotocollen en disaster recovery'
+]
+},
+{
+title: 'Netwerk- & Systeembeheerder',
+company: 'Madar Dezful Holding',
+date: '2021 – 2022',
+desc: [
+'Administratie van actieve/passieve netwerklagen',
+'Uitvoering van beveiligingsupdates en kwetsbaarheidsbeoordelingen',
+'Hardware lifecycle management en infrastructuur-upgrades',
+'Naleving van industriestandaarden'
+]
+},
+{
+title: 'Netwerkarchitect & Smart Systems Aannemer',
+company: 'Koohrang Rayaneh / Restan Net',
+date: '2020 – 2021',
+desc: [
+'Ontwerp en inbedrijfstelling van enterprise-netwerken',
+'Integratie van IoT-bewakingssystemen voor 15+ klanten',
+'Configuratie van MikroTik/Cisco edge-routers',
+'Projecten 20% voor schema geleverd'
+]
+}
+],
+projectsTitle: 'Technische Projecten',
+projects: [
+{
+title: 'Algoritmisch Trading Ecosysteem',
+desc: 'Ontwikkeling van 10 propriëtaire trading-bots met C++ & Python voor Crypto/Forex-markten met low-latency API-integraties.',
+metrics: ['10 Bots', 'C++/Python', 'Low-Latency', 'High-Frequency']
+},
+{
+title: 'jal.ir Enterprise Platform',
+desc: 'Bouw van een sterk geoptimaliseerd, SEO-first webarchitectuur met geavanceerde caching-mechanismen.',
+metrics: ['95+ WooRank', '60% Sneller', 'SEO-First', 'Enterprise']
+},
+{
+title: 'Offensive Security Operations',
+desc: 'Uitvoering van 7+ black-box penetratietests voor bedrijfsnetwerken met uitgebreide kwetsbaarheidsrapporten.',
+metrics: ['7+ Audits', 'Kali Linux', 'Black-Box', 'Zero-Day']
+},
+{
+title: 'n8n Workflow Automatisering',
+desc: 'Ontwerp van AI-gestuurde automatiseringspijplijnen met Telegram-microservices en CRM-dataverwerking.',
+metrics: ['15+ Bots', 'AI-Gestuurd', 'CRM', 'Auto-Reporting']
+}
+],
+skillsTitle: 'Kerncompetenties',
+skills: [
+{ name: 'Netwerkarchitectuur', level: 95 },
+{ name: 'Cybersecurity & Pentesting', level: 90 },
+{ name: 'Python & Backend Ontwikkeling', level: 88 },
+{ name: 'Web Engineering & SEO', level: 92 },
+{ name: 'Automatisering & AI', level: 85 },
+{ name: 'Systeembeheer', level: 90 }
+],
+eduTitle: 'Opleiding & Certificeringen',
+education: [
+{ type: 'degree', title: 'B.Sc. Software Engineering', institution: 'Afgestudeerd' },
+{ type: 'degree', title: 'Associate Degree in Software', institution: 'Afgestudeerd' },
+{ type: 'cert', title: 'CCNA (Cisco)', institution: 'Cisco' },
+{ type: 'cert', title: 'MTCNA (MikroTik)', institution: 'MikroTik' },
+{ type: 'cert', title: 'Network+', institution: 'CompTIA' },
+{ type: 'cert', title: 'ICDL', institution: 'ICDL' }
+],
+langTitle: 'Talen',
+languages: [
+{ name: 'Perzisch', level: 'Moedertaal' },
+{ name: 'Engels', level: 'Professioneel' }
+],
+contactTitle: 'Contact',
+contact: [
+{ icon: '📧', label: 'E-mail', value: 'mohammadmahdi.shaeidi1381@gmail.com' },
+{ icon: '📞', label: 'Telefoon', value: '+98 916 396 134' },
+{ icon: '', label: 'Portfolio', value: 'jal.ir' },
+{ icon: '', label: 'Geboren', value: '2002 · Dezful, Iran' }
+]
+},
+fa: {
+name: 'محمد مهدی شاعیدی',
+title: 'مهندس ارشد راهکارهای IT | متخصص امنیت شبکه و اتوماسیون',
+location: 'دزفول، ایران · آماده انتقال',
+statYears: 'سال تجربه',
+statProjects: 'پروژه تحویل‌شده',
+statSecurity: 'ممیزی امنیتی',
+statUptime: 'پایداری سیستم',
+techTitle: 'تکنولوژی‌های تخصصی',
+techStack: [
+{ category: 'شبکه و زیرساخت', tags: ['CCNA', 'MikroTik', 'Cisco', 'TCP/IP', 'VLAN', 'Routing', 'Switching'] },
+{ category: 'امنیت سایبری', tags: ['Kali Linux', 'تست نفوذ', 'ارزیابی آسیب‌پذیری', 'Zero-Trust', 'ایمن‌سازی شبکه'] },
+{ category: 'توسعه بک‌اند', tags: ['Python', 'C++', 'Django', 'Flask', 'n8n', 'REST APIs'] },
+{ category: 'تکنولوژی‌های وب', tags: ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'JavaScript', 'SEO'] },
+{ category: 'اتوماسیون و هوش مصنوعی', tags: ['n8n Workflows', 'Telegram Bots', 'یکپارچه‌سازی AI', 'Prompt Engineering'] },
+{ category: 'فین‌تک', tags: ['ترید الگوریتمی', 'Crypto APIs', 'سیستم‌های فارکس', 'تحلیل کمی'] }
+],
+expTitle: 'سوابق حرفه‌ای',
+experience: [
+{
+title: 'مهندس ارشد وب و استراتژیست SEO',
+company: 'پگاه (ژال) · تهران',
+date: '۴۰۲ - اکنون',
+desc: [
+'معماری و پیاده‌سازی jal.ir از صفر، دستیابی به امتیاز ۹۵+ WooRank',
+'پیاده‌سازی استراتژی‌های سئو تکنیکال پیشرفته، ۳۴۰٪ افزایش ترافیک ارگانیک',
+'بهینه‌سازی Core Web Vitals، ۶٪ کاهش زمان بارگذاری',
+'تکرار موفق معماری برای پلتفرم دندانمهر دزفول'
+]
+},
+{
+title: 'مهندس زیرساخت IT',
+company: 'سرای ایرانی',
+date: '۱۴۰۱ – ۱۴۰۲',
+desc: [
+'مدیریت توپولوژی شبکه سازمانی برای ۲۰۰+ endpoint',
+'توسعه اسکریپت‌های اتوماسیون پایتون، ۴۰٪ کاهش overhead دستی IT',
+'حفظ پایداری ۹۹.۹٪ برای سیستم‌های حیاتی',
+'پیاده‌سازی پروتکل‌های امنیتی و روش‌های بازیابی فاجعه'
+]
+},
+{
+title: 'مدیر شبکه و سیستم',
+company: 'هلدینگ مادر دزفول',
+date: '۱۴۰ – ۱۴۰۱',
+desc: [
+'مدیریت لایه‌های شبکه پسیو/اکتیو',
+'اجرای پچ‌های امنیتی و ارزیابی‌های آسیب‌پذیری',
+'مدیریت چرخه عمر سخت‌افزار و ارتقاء زیرساخت',
+'اطمینان از انطباق با استانداردهای امنیتی صنعت'
+]
+},
+{
+title: 'معمار شبکه و پیمانکار سیستم‌های هوشمند',
+company: 'کوهرنگ رایانه / رستان نت',
+date: '۱۳۹۹ – ۱۴۰۰',
+desc: [
+'طراحی و استقرار شبکه‌های سازمانی',
+'یکپارچه‌سازی سیستم‌های نظارتی IoT برای ۱۵+ مشتری',
+'پیکربندی روترهای MikroTik/Cisco برای عملکرد بهینه',
+'تحویل پروژه‌ها ۲۰٪ زودتر از برنامه بدون نقص'
+]
+}
+],
+projectsTitle: 'پروژه‌های مهندسی کلیدی',
+projects: [
+{
+title: 'اکوسیستم ترید الگوریتمی',
+desc: 'مهندسی ۱۰ ربات ترید اختصاصی با C++ و پایتون برای بازارهای کریپتو/فارکس با APIهای Low-Latency.',
+metrics: ['۱۰ ربات', 'C++/Python', 'Low-Latency', 'High-Frequency']
+},
+{
+title: 'پلتفرم سازمانی jal.ir',
+desc: 'ساخت معماری وب بهینه و SEO-First با مکانیزم‌های کشینگ پیشرفته.',
+metrics: ['۹۵+ WooRank', '۶۰٪ سریع‌تر', 'SEO-First', 'Enterprise']
+},
+{
+title: 'عملیات امنیت تهاجمی',
+desc: 'اجرای بیش از ۷ تست نفوذ Black-Box برای شبکه‌های سازمانی با گزارش‌های جامع آسیب‌پذیری.',
+metrics: ['۷+ ممیزی', 'Kali Linux', 'Black-Box', 'Zero-Day']
+},
+{
+title: 'اتوماسیون گردش‌کار n8n',
+desc: 'طراحی پایپ‌لاین‌های اتوماسیون مبتنی بر AI با میکروسرویس‌های تلگرام و تحلیل داده‌های CRM.',
+metrics: ['۱۵+ ربات', 'AI-Driven', 'CRM', 'Auto-Reporting']
+}
+],
+skillsTitle: 'شایستگی‌های اصلی',
+skills: [
+{ name: 'معماری شبکه', level: 95 },
+{ name: 'امنیت سایبری و تست نفوذ', level: 90 },
+{ name: 'پایتون و توسعه بک‌اند', level: 88 },
+{ name: 'مهندسی وب و SEO', level: 92 },
+{ name: 'اتوماسیون و هوش مصنوعی', level: 85 },
+{ name: 'مدیریت سیستم', level: 90 }
+],
+eduTitle: 'تحصیلات و گواهینامه‌ها',
+education: [
+{ type: 'degree', title: 'کارشناسی مهندسی نرم‌افزار', institution: 'فارغ‌التحصیل' },
+{ type: 'degree', title: 'کاردانی نرم‌افزار', institution: 'فارغ‌التحصیل' },
+{ type: 'cert', title: 'CCNA (سیسکو)', institution: 'Cisco' },
+{ type: 'cert', title: 'MTCNA (میکروتیک)', institution: 'MikroTik' },
+{ type: 'cert', title: 'Network+', institution: 'CompTIA' },
+{ type: 'cert', title: 'ICDL', institution: 'ICDL' }
+],
+langTitle: 'زبان‌ها',
+languages: [
+{ name: 'فارسی', level: 'زبان مادری' },
+{ name: 'انگلیسی', level: 'تخصصی' }
+],
+contactTitle: 'تماس',
+contact: [
+{ icon: '📧', label: 'ایمیل', value: 'mohammadmahdi.shaeidi1381@gmail.com' },
+{ icon: '📞', label: 'تلفن', value: '+98 916 396 134' },
+{ icon: '🌐', label: 'نمونه‌کار', value: 'jal.ir' },
+{ icon: '', label: 'تولد', value: '۱۳۸۱ · دزفول، ایران' }
+]
+},
+ar: {
+name: 'محمد مهدي شاعيدي',
+title: 'مهندس حلول IT أول | متخصص أمن الشبكات والأتمتة',
+location: 'دزفول، إيران · منفتح على الانتقال',
+statYears: 'سنوات الخبرة',
+statProjects: 'مشاريع مسلّمة',
+statSecurity: 'تدقيقات أمنية',
+statUptime: 'وقت تشغيل النظام',
+techTitle: 'المكدس التقني',
+techStack: [
+{ category: 'الشبكة والبنية التحتية', tags: ['CCNA', 'MikroTik', 'Cisco', 'TCP/IP', 'VLAN', 'Routing', 'Switching'] },
+{ category: 'الأمن السيبراني', tags: ['Kali Linux', 'اختبار الاختراق', 'تقييم الثغرات', 'Zero-Trust', 'تأمين الشبكة'] },
+{ category: 'تطوير الخلفية', tags: ['Python', 'C++', 'Django', 'Flask', 'n8n', 'REST APIs'] },
+{ category: 'تقنيات الويب', tags: ['WordPress', 'Elementor', 'HTML5', 'CSS3', 'JavaScript', 'SEO'] },
+{ category: 'الأتمتة والذكاء الاصطناعي', tags: ['n8n Workflows', 'Telegram Bots', 'تكامل AI', 'Prompt Engineering'] },
+{ category: 'التكنولوجيا المالية', tags: ['التداول الخوارزمي', 'Crypto APIs', 'أنظمة الفوركس', 'التحليل الكمي'] }
+],
+expTitle: 'الخبرة المهنية',
+experience: [
+{
+title: 'مهندس ويب أول واستراتيجي SEO',
+company: 'پگاه (ژال) · طهران',
+date: '٢٠٢٣ – حتى الآن',
+desc: [
+'تصميم ونشر jal.ir من الصفر، تحقيق درجة ٩٥+ WooRank',
+'تنفيذ استراتيجيات SEO تقنية متقدمة، زيادة ٣٤٠٪ في الزيارات العضوية',
+'تحسين Core Web Vitals، تقليل وقت التحميل بنسبة ٦٠٪',
+'نسخ ناجح للبنية لمنصة دندانمهر دزفول'
+]
+},
+{
+title: 'مهندس البنية التحتية لتكنولوجيا المعلومات',
+company: 'سرای ایرانی',
+date: '٢٠٢٢ – ٢٠٢٣',
+desc: [
+'إدارة طوبولوجيا الشبكة المؤسسية لـ ٢٠+ نقطة نهاية',
+'تطوير سكربتات أتمتة بايثون، تقليل ٤٠٪ من عبء العمل اليدوي',
+'٩.٩٪ وقت تشغيل للأنظمة التجارية الحرجة',
+'تنفيذ بروتوكولات الأمان وإجراءات التعافي من الكوارث'
+]
+},
+{
+title: 'مدير الشبكة والأنظمة',
+company: 'هلدینگ مادر دزفول',
+date: '٢٠٢١ – ٢٠٢٢',
+desc: [
+'إدارة طبقات الشبكة النشطة/السلبية',
+'تنفيذ تصحيحات الأمان وتقييمات الثغرات',
+'إدارة دورة حياة الأجهزة وترقيات البنية التحتية',
+'ضمان الامتثال لمعايير الأمان الصناعية'
+]
+},
+{
+title: 'مهندس شبكات ومقاول أنظمة ذكية',
+company: 'کوهرنگ رایانه / رستان نت',
+date: '٢٠٢٠ – ٢٠٢١',
+desc: [
+'تصميم وتشغيل شبكات المؤسسات',
+'دمج أنظمة مراقبة IoT لـ ١٥+ عميل',
+'تكوين أجهزة توجيه MikroTik/Cisco',
+'تسليم المشاريع قبل الموعد النهائي بنسبة ٢٠٪'
+]
+}
+],
+projectsTitle: 'المشاريع الهندسية الرئيسية',
+projects: [
+{
+title: 'نظام التداول الخوارزمي',
+desc: 'هندسة ١٠ بوتات تداول خاصة باستخدام C++ وبايثون لأسواق العملات الرقمية والفوركس.',
+metrics: ['١٠ بوتات', 'C++/Python', 'Low-Latency', 'High-Frequency']
+},
+{
+title: 'منصة jal.ir المؤسسية',
+desc: 'بناء بنية ويب محسّنة للغاية وقائمة على SEO مع آليات تخزين مؤقت متقدمة.',
+metrics: ['٩٥+ WooRank', '٦٠٪ أسرع', 'SEO-First', 'Enterprise']
+},
+{
+title: 'عمليات الأمن الهجومي',
+desc: 'إجراء أكثر من ٧ اختبارات اختراق للصناديق السوداء لشبكات المؤسسات.',
+metrics: ['٧+ تدقيقات', 'Kali Linux', 'Black-Box', 'Zero-Day']
+},
+{
+title: 'أتمتة سير العمل n8n',
+desc: 'تصميم خطوط أتمتة مخصصة مدعومة بالذكاء الاصطناعي تدمج خدمات تلغرام الصغيرة.',
+metrics: ['٥+ بوت', 'AI-Gestuurd', 'CRM', 'Auto-Reporting']
+}
+],
+skillsTitle: 'الكفاءات الأساسية',
+skills: [
+{ name: 'هندسة الشبكات', level: 95 },
+{ name: 'الأمن السيبراني واختبار الاختراق', level: 90 },
+{ name: 'بايثون وتطوير الخلفية', level: 88 },
+{ name: 'هندسة الويب وSEO', level: 92 },
+{ name: 'الأتمتة والذكاء الاصطناعي', level: 85 },
+{ name: 'إدارة النظام', level: 90 }
+],
+eduTitle: 'التعليم والشهادات',
+education: [
+{ type: 'degree', title: 'بكالوريوس هندسة البرمجيات', institution: 'خريج' },
+{ type: 'degree', title: 'دبلوم مشارك في البرمجيات', institution: 'خريج' },
+{ type: 'cert', title: 'CCNA (سيسكو)', institution: 'Cisco' },
+{ type: 'cert', title: 'MTCNA (ميكروتيك)', institution: 'MikroTik' },
+{ type: 'cert', title: 'Network+', institution: 'CompTIA' },
+{ type: 'cert', title: 'ICDL', institution: 'ICDL' }
+],
+langTitle: 'اللغات',
+languages: [
+{ name: 'الفارسية', level: 'اللغة الأم' },
+{ name: 'الإنجليزية', level: 'مهني' }
+],
+contactTitle: 'اتصل بي',
+contact: [
+{ icon: '📧', label: 'البريد الإلكتروني', value: 'mohammadmahdi.shaeidi1381@gmail.com' },
+{ icon: '📞', label: 'الهاتف', value: '+98 916 396 134' },
+{ icon: '🌐', label: 'معرض الأعمال', value: 'jal.ir' },
+{ icon: '📅', label: 'الميلاد', value: '٠٠٢ · دزفول، إيران' }
+]
+}
+};
+
+function renderContent(lang) {
+const t = translations[lang];
+if (!t) return;
+
+// Update simple text elements
+document.getElementById('name').textContent = t.name;
+document.getElementById('title').textContent = t.title;
+document.getElementById('location').textContent = t.location;
+document.getElementById('statYears').textContent = t.statYears;
+document.getElementById('statProjects').textContent = t.statProjects;
+document.getElementById('statSecurity').textContent = t.statSecurity;
+document.getElementById('statUptime').textContent = t.statUptime;
+document.getElementById('techTitle').textContent = t.techTitle;
+document.getElementById('expTitle').textContent = t.expTitle;
+document.getElementById('projectsTitle').textContent = t.projectsTitle;
+document.getElementById('skillsTitle').textContent = t.skillsTitle;
+document.getElementById('eduTitle').textContent = t.eduTitle;
+document.getElementById('langTitle').textContent = t.langTitle;
+document.getElementById('contactTitle').textContent = t.contactTitle;
+
+// Render Tech Stack
+const techGrid = document.getElementById('techGrid');
+techGrid.innerHTML = t.techStack.map(cat => `
+<div class="tech-category">
+<h3>${cat.category}</h3>
+<div class="tech-tags">
+${cat.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+</div>
+</div>
+`).join('');
+
+// Render Experience
+const timeline = document.getElementById('timeline');
+timeline.innerHTML = t.experience.map(job => `
+<div class="timeline-item">
+<div class="timeline-header">
+<div>
+<div class="timeline-title">${job.title}</div>
+<div class="timeline-company">${job.company}</div>
+</div>
+<div class="timeline-date">${job.date}</div>
+</div>
+<div class="timeline-desc">
+<ul>
+${job.desc.map(point => `<li>${point}</li>`).join('')}
+</ul>
+</div>
+</div>
+`).join('');
+
+// Render Projects
+const projectsGrid = document.getElementById('projectsGrid');
+projectsGrid.innerHTML = t.projects.map(proj => `
+<div class="project-card">
+<div class="project-title">${proj.title}</div>
+<div class="project-desc">${proj.desc}</div>
+<div class="project-metrics">
+${proj.metrics.map(m => `<span class="metric">${m}</span>`).join('')}
+</div>
+</div>
+`).join('');
+
+// Render Skills
+const skillsGrid = document.getElementById('skillsGrid');
+skillsGrid.innerHTML = t.skills.map(skill => `
+<div class="skill-item">
+<div class="skill-header">
+<span class="skill-name">${skill.name}</span>
+<span class="skill-level">${skill.level}%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: ${skill.level}%"></div>
+</div>
+</div>
+`).join('');
+
+// Render Education
+const eduContent = document.getElementById('eduContent');
+eduContent.innerHTML = `
+<div class="lang-grid">
+${t.education.map(edu => `
+<div class="lang-card">
+<div class="lang-name">${edu.title}</div>
+<div class="lang-level">${edu.institution}</div>
+</div>
+`).join('')}
+</div>
+`;
+
+// Render Languages
+const langGrid = document.getElementById('langGrid');
+langGrid.innerHTML = t.languages.map(l => `
+<div class="lang-card">
+<div class="lang-name">${l.name}</div>
+<div class="lang-level">${l.level}</div>
+</div>
+`).join('');
+
+// Render Contact
+const contactGrid = document.getElementById('contactGrid');
+contactGrid.innerHTML = t.contact.map(c => `
+<div class="contact-item">
+<div class="contact-icon">${c.icon}</div>
+<div class="contact-info">
+<div class="contact-label">${c.label}</div>
+<div class="contact-value">${c.value}</div>
+</div>
+</div>
+`).join('');
+
+// Update active button
+document.querySelectorAll('.lang-btn').forEach(btn => {
+btn.classList.toggle('active', btn.dataset.lang === lang);
+});
+
+// Handle RTL
+document.body.classList.toggle('rtl', lang === 'fa' || lang === 'ar');
+
+// Save to localStorage
+localStorage.setItem('resume-lang', lang);
+}
+
+// Event listeners
+document.querySelectorAll('.lang-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+renderContent(this.dataset.lang);
+});
+});
+
+// Load saved language or default to English
+const saved = localStorage.getItem('resume-lang') || 'en';
+renderContent(saved);
+</script>
+</body>
+</html>
